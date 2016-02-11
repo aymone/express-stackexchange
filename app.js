@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
 //var routes = require('./routes/index');
-var controllers   = require('./controllers/index');
-var users         = require('./controllers/users');
-var stackexchange = require('./middlewares/stackexchange');
+var controllers             = require('./controllers/index');
+var users                   = require('./controllers/users');
+var stackexchangeController = require('./controllers/stackexchange-controller');
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', controllers);
 app.use('/users', users);
-app.use('/stackexchange', stackexchange);
+app.use('/stackexchange', stackexchangeController);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
